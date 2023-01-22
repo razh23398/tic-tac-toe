@@ -1,0 +1,49 @@
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.board-game{
+    display: flex;
+}
+
+.board-game p{
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+}
+.btn{
+    color: #fff;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.restart{
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 0, 0, 0.7);
+    position: fixed;
+}
+.hide{
+    display: none;
+}
+.non-hide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+.restart-text{
+    opacity: 1 !important; 
+    background-color: blue;
+    color: #fff;
+}
