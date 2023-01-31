@@ -1,9 +1,10 @@
 body{
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Chilanka', cursive;
 }
 .header{
     display: flex;
@@ -18,7 +19,10 @@ body{
     margin: 10px;
     height: 100px;
     width: 100px;
-    background-color: blue;
+    background-color: rgb(90, 167, 94);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .btn{
     color: #fff;
@@ -27,10 +31,13 @@ body{
 }
 
 .restart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     height: 100%;
     width: 100%;
-    background-color: rgba(255, 0, 0, 0.7);
+    background-color: rgba(16, 32, 20, 0.7);
     position: fixed;
 }
 .hide{
@@ -43,7 +50,20 @@ body{
     z-index: 2;
 }
 .restart-text{
+    border-radius: 50px;
+    height: 15rem;
+    width: 20rem;
     opacity: 1 !important; 
-    background-color: blue;
+    background-color: rgb(4, 105, 46);
     color: #fff;
+}
+.restart-text button{
+    font-weight: 600;
+    font-family: 'Chilanka', cursive;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    height: 5rem;
+    width: 10rem;
+    color: #fff;
+    background-color: rgb(35, 41, 36);
 }

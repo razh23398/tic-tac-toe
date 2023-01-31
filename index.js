@@ -1,12 +1,3 @@
-let hole1 = null
-let hole2 = null
-let hole3 = null
-let hole4 = null
-let hole5 = null
-let hole6 = null
-let hole7 = null
-let hole8 = null
-let hole9 = null
 let hole11 = document.querySelector(".btn1")
 let hole22 = document.querySelector(".btn2")
 let hole33 = document.querySelector(".btn3")
@@ -19,11 +10,10 @@ let hole99 = document.querySelector(".btn9")
 
 let xoro = document.querySelector(".xoro")
 
-
 let turn = "0"
 xoro.innerHTML = turn;
 console.log(turn)
-
+let winCheck = 0
 
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach(function(button) {
@@ -37,20 +27,24 @@ buttons.forEach(function(button) {
         }else{
             button.innerHTML = "0"
             lookForWin()
+            lookForDraw()
             turn = "X"
             xoro.innerHTML = "X"
+            console.log(winCheck)
         }
     }else if (turn === "X"){
         if (button.innerHTML === "0" || button.innerHTML === "X"){
-            alert("valid!")
+            alert("not valid!")
             turn = "X"
             xoro.innerHTML = "X"
         }
         else{
             button.innerHTML = "X"
             lookForWin()
+            lookForDraw()
             turn = "0"
             xoro.innerHTML = "0"
+            console.log(winCheck)
         }
     }
   });
@@ -59,118 +53,41 @@ buttons.forEach(function(button) {
 const restartBtn = document.querySelector(".restart")
 const wining = document.querySelector(".wining")
 
-function lookForWin(){
-    // LOOK FOR X WINS
-    if (hole11.innerHTML === "X" && hole22.innerHTML === "X" && hole33.innerHTML === "X") {
-        console.log("x win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "X win !"
+function lookForWin() {
+    const winConditions = [
+      [hole11, hole22, hole33],
+      [hole44, hole55, hole66],
+      [hole77, hole88, hole99],
+      [hole11, hole44, hole77],
+      [hole22, hole55, hole88],
+      [hole33, hole66, hole99],
+      [hole11, hole55, hole99],
+      [hole77, hole55, hole33]
+    ];
+    for (const condition of winConditions) {
+      if (condition.every(el => el.innerHTML === "X")) {
+        restartBtn.classList.remove("hide");
+        wining.innerHTML = "X win !";
+        winCheck = 1;
+        break;
+      } else if (condition.every(el => el.innerHTML === "0")) {
+        restartBtn.classList.remove("hide");
+        wining.innerHTML = "0 win !";
+        winCheck = 1;
+        break;
+      }
     }
-    if (hole44.innerHTML === "X" && hole55.innerHTML === "X" && hole66.innerHTML === "X") {
-        console.log("x win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "X win !"
-    }
-    if (hole77.innerHTML === "X" && hole88.innerHTML === "X" && hole99.innerHTML === "X") {
-        console.log("x win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "X win !"
-    }
-    if (hole11.innerHTML === "X" && hole44.innerHTML === "X" && hole77.innerHTML === "X") {
-        console.log("x win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "X win !"
-    }
-    if (hole22.innerHTML === "X" && hole55.innerHTML === "X" && hole88.innerHTML === "X") {
-        console.log("x win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "X win !"
-    }
-    if (hole33.innerHTML === "X" && hole66.innerHTML === "X" && hole99.innerHTML === "X") {
-        console.log("x win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "X win !"
-    }
-    if (hole11.innerHTML === "X" && hole55.innerHTML === "X" && hole99.innerHTML === "X") {
-        console.log("x win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "X win !"
-    }
-    if (hole77.innerHTML === "X" && hole55.innerHTML === "X" && hole33.innerHTML === "X") {
-        console.log("x win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "X win !"
-    }
-    // LOOK FOR 0 WINS
-    if (hole11.innerHTML === "0" && hole22.innerHTML === "0" && hole33.innerHTML === "0") {
-        console.log("0 win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "0 win !"
-    }
-    if (hole44.innerHTML === "0" && hole55.innerHTML === "0" && hole66.innerHTML === "0") {
-        console.log("0 win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "0 win !"
-    }
-    if (hole77.innerHTML === "0" && hole88.innerHTML === "0" && hole99.innerHTML === "0") {
-        console.log("0 win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "0 win !"
-    }
-    if (hole11.innerHTML === "0" && hole44.innerHTML === "0" && hole77.innerHTML === "0") {
-        console.log("0 win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "0 win !"
-    }
-    if (hole22.innerHTML === "0" && hole55.innerHTML === "0" && hole88.innerHTML === "0") {
-        console.log("0 win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "0 win !"
-    }
-    if (hole33.innerHTML === "0" && hole66.innerHTML === "0" && hole99.innerHTML === "0") {
-        console.log("0 win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "0 win !"
-    }
-    if (hole11.innerHTML === "0" && hole55.innerHTML === "0" && hole99.innerHTML === "0") {
-        console.log("0 win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "0 win !"
-    }
-    if (hole77.innerHTML === "0" && hole55.innerHTML === "0" && hole33.innerHTML === "0") {
-        console.log("0 win !!!!")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "0 win !"
-    }
+  }
+
+function lookForDraw(){
     if (hole11.innerHTML != "" && hole22.innerHTML != "" && hole33.innerHTML
     != "" && hole44.innerHTML != "" && hole55.innerHTML != "" && hole66.innerHTML
-    != "" && hole77.innerHTML != "" && hole88.innerHTML != "" && hole99.innerHTML != "")
-    {
-        console.log("draw !")
-        restartBtn.classList.add("non-hide")
-        restartBtn.classList.remove("hide")
-        wining.innerHTML = "draw !"
-    }
+    != "" && hole77.innerHTML != "" && hole88.innerHTML != "" && hole99.innerHTML != "" && winCheck === 0)
+        {
+            console.log("draw !")
+            restartBtn.classList.add("non-hide")
+            restartBtn.classList.remove("hide")
+            wining.innerHTML = "draw !"
+        }
 }
-
-
-
-
-
 
